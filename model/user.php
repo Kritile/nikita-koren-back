@@ -26,8 +26,17 @@ class User{
         $user = mysqli_query($this->link, 'SELECT * FROM users WHERE `login` = "'.$user_login.'"');
         if(!$user){
             var_dump(mysqli_error($this->link));
+            if($password === $user['pass']){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
-        return mysqli_fetch_assoc($user);
+    }
+    public function register_user($user_login, $password) {
+        $query = 'INSERT INTO users (login, pass) VALUES ("'.$user_login.'", "'.$password.'")';
+        return mysqli_query($this->link, $query);
     }
 
 
