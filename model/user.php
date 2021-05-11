@@ -25,6 +25,10 @@ class User{
     public function login($user_login, $password) {
         $user = mysqli_query($this->link, 'SELECT * FROM users WHERE `login` = "'.$user_login.'"');
         var_dump('SELECT * FROM users WHERE login = "'.$user_login.'"');
+        if(!$user){
+            var_dump(mysqli_error($this->link));
+            var_dump(mysqli_errno($this->link));
+        }
         return $user;
     }
 
