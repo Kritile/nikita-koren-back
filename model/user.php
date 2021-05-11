@@ -1,7 +1,8 @@
 <?
 
 
-class User{
+class User
+{
     private $id;
     private $login;
     private $pass;
@@ -9,12 +10,12 @@ class User{
 
     public function __construct()
     {
-        $url= parse_url(getenv("CLEARDB_DATABASE_URL"));
+        $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
         $server = $url["host"];
         $username = $url["user"];
         $password = $url["pass"];
-        $db = substr($url["path"],1);
-        $this->link = mysqli_connect($server, $username, $password,'heroku_33710f2ff7d17f7');
+        $db = substr($url["path"], 1);
+        $this->link = mysqli_connect($server, $username, $password, 'heroku_33710f2ff7d17f7');
         if (mysqli_connect_errno()) {
             printf("Connect failed: %s\n", mysqli_connect_error());
             exit();
@@ -22,20 +23,25 @@ class User{
 
 
     }
-    public function login($user_login, $password) {
-        $user = mysqli_query($this->link, 'SELECT * FROM users WHERE `login` = "'.$user_login.'"');
-        if(!$user){
+
+    public function login($user_login, $password)
+    {
+        $user = mysqli_query($this->link, 'SELECT * FROM users WHERE `login` = "' . $user_login . '"');
+        if ($user) {
             var_dump(mysqli_error($this->link));
-            if($password === $user['pass']){
+            if ($password === $user['pass']) {
                 return true;
-            }
-            else{
+            } else {
                 return false;
             }
+        } else {
+            return false;
         }
     }
-    public function register_user($user_login, $password) {
-        $query = 'INSERT INTO users (login, pass) VALUES ("'.$user_login.'", "'.$password.'")';
+
+    public function register_user($user_login, $password)
+    {
+        $query = 'INSERT INTO users (login, pass) VALUES ("' . $user_login . '", "' . $password . '")';
         return mysqli_query($this->link, $query);
     }
 
