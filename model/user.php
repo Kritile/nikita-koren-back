@@ -19,6 +19,8 @@ class User
         if (mysqli_connect_errno()) {
             printf("Connect failed: %s\n", mysqli_connect_error());
             exit();
+        }else{
+            mysqli_set_charset($this->link,'utf8');
         }
 
 
