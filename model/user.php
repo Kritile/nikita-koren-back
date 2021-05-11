@@ -14,7 +14,7 @@ class User{
         $username = $url["user"];
         $password = $url["pass"];
         $db = substr($url["path"],1);
-        $this->link = mysqli_connect($server, $username, $password);
+        $this->link = mysqli_connect($server, $username, $password,'heroku_33710f2ff7d17f7');
         if (mysqli_connect_errno()) {
             printf("Connect failed: %s\n", mysqli_connect_error());
             exit();
