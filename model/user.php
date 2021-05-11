@@ -1,5 +1,5 @@
 <?
-require '../conf.php';
+
 
 class User{
     private $id;
