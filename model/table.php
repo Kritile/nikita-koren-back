@@ -22,10 +22,16 @@ class Table
     public function getListById($user_id){
         $query = 'SELECT table_id FROM user_tables WHERE user_id = "'.$user_id.'"';
         $table_ids = array();
+        $tables = array();
         foreach(mysqli_fetch_all(mysqli_query($this->link, $query)) as $key => $value){
             $table_ids[] = $value[0];
         }
-        return $table_ids;
+        foreach($table_ids as $key => $value){
+            $query = 'SELECT * FROM tables WHERE id = "'.$value.'"';
+            $tables[] = mysqli_fetch_assoc(mysqli_query($this -> link, $query));
+
+        }
+        return $tables;
 
     }
 }
