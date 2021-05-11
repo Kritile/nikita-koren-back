@@ -28,7 +28,6 @@ class User
     {
         $user = mysqli_fetch_assoc(mysqli_query($this->link, 'SELECT * FROM users WHERE `login` = "' . $user_login . '"'));
         if ($user) {
-            var_dump(mysqli_error($this->link));
             if ($password === $user['pass']) {
                 return true;
             } else {
