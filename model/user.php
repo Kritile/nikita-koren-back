@@ -27,7 +27,7 @@ class User{
         if(!$user){
             var_dump(mysqli_error($this->link));
         }
-        return $user;
+        return mysqli_fetch_assoc($user);
     }
 
 
