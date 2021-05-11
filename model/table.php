@@ -21,7 +21,7 @@ class Table
     }
     public function getListById($user_id){
         $query = 'SELECT table_id FROM user_tables WHERE user_id = "'.$user_id.'"';
-        return mysqli_fetch_all(mysqli_query($this->link, $query));
+        return mysqli_fetch_assoc(mysqli_query($this->link, $query));
 
     }
 }
