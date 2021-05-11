@@ -22,31 +22,31 @@ class Card
     }
 
     public function getCardListByTable($table_id) {
-        $query = 'SELECT card_id FROM group WHERE table_id = "'.$table_id.'"';
+        $query = 'SELECT card_id FROM `group` WHERE table_id = "'.$table_id.'"';
         $card_ids = array();
         $cards = array();
         var_dump($query);
         mysqli_query($this->link, $query);
-        var_dump(mysqli_error());
+        var_dump(mysqli_error($this->link));
         foreach(mysqli_fetch_all(mysqli_query($this->link, $query)) as $key => $value){
             $card_ids[] = $value[0];
         }
         foreach($card_ids as $key => $value){
-            $query = 'SELECT * FROM card WHERE id = "'.$value.'"';
+            $query = 'SELECT * FROM `card` WHERE id = "'.$value.'"';
             $cards[] = mysqli_fetch_assoc(mysqli_query($this -> link, $query));
 
         }
         return $cards;
     }
     public function getCardListByUser($user_id) {
-        $query = 'SELECT card_id FROM user_group WHERE user_id = "'.$user_id.'"';
+        $query = 'SELECT card_id FROM `user_group` WHERE user_id = "'.$user_id.'"';
         $card_ids = array();
         $cards = array();
         foreach(mysqli_fetch_all(mysqli_query($this->link, $query)) as $key => $value){
             $card_ids[] = $value[0];
         }
         foreach($card_ids as $key => $value){
-            $query = 'SELECT * FROM card WHERE id = "'.$value.'"';
+            $query = 'SELECT * FROM `card` WHERE id = "'.$value.'"';
             $cards[] = mysqli_fetch_assoc(mysqli_query($this -> link, $query));
 
         }
