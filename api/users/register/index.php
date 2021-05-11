@@ -1,8 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
 include "../../../model/user.php";
-if (isset($_POST['login']) && isset($_POST['pass'])) {
-    $user = new User();
-    echo json_encode($user->register_user($_POST['login'], $_POST['pass']));
-} else {
-    echo 'Only POST request';
-}
+$user = new User();
+echo json_encode( $user->register_user($_GET['login'],$_GET['pass']));
