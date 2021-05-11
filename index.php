@@ -13,6 +13,6 @@ if (mysqli_connect_errno()) {
     printf("Connect failed: %s\n", mysqli_connect_error());
     exit();
 }else{
-    $user = mysqli_query($link,'SELECT * FROM user WHERE `id` ='.id);
+    $user = mysqli_query($link,'SELECT * FROM user WHERE `id` = 1');
     var_dump($user);
 }
