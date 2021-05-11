@@ -27,9 +27,6 @@ class Card
         $query = 'SELECT card_id FROM `group` WHERE table_id = "'.$table_id.'"';
         $card_ids = array();
         $cards = array();
-        var_dump($query);
-        mysqli_query($this->link, $query);
-        var_dump(mysqli_error($this->link));
         foreach(mysqli_fetch_all(mysqli_query($this->link, $query)) as $key => $value){
             $card_ids[] = $value[0];
         }
