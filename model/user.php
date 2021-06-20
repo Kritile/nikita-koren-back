@@ -46,5 +46,10 @@ class User
         return mysqli_query($this->link, $query);
     }
 
+    public function add_table($id,$table_id){
+        $query = "INSERT INTO user_tables (user_id, table_id) VALUE (".$id.",".$table_id.")";
+        mysqli_query($this->link, $query);
+    }
+
 
 }
