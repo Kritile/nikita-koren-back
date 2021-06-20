@@ -53,17 +53,17 @@ class Card
     }
     public function insert_card($group_id, $name, $desc,  $date, $status = 0) {
         $query = 'INSERT INTO `card` (name, `desc`, status, date, group_id) VALUE ("'.$name.'","'.$desc.'",'.$status.',"'.$date.'",'.$group_id.')';
-        mysqli_fetch_all(mysqli_query($this->link, $query));
+        mysqli_query($this->link, $query);
         print_r(mysqli_error($this->link));
     }
     public function remove_card($card_id) {
         $query = 'DELETE FROM `card` where id = '.$card_id;
-        mysqli_fetch_all(mysqli_query($this->link, $query));
+        mysqli_query($this->link, $query);
         print_r(mysqli_error($this->link));
     }
     public function update_card($card_id, $group_id, $name, $desc,  $date, $status = 0) {
         $query = "UPDATE card SET name='".$name."', `desc` = '".$desc."', status = ".$status.", date = '".$date."' where id = ".$card_id;
-        mysqli_fetch_all(mysqli_query($this->link, $query));
+        mysqli_query($this->link, $query);
         print_r(mysqli_error($this->link));
     }
 }
