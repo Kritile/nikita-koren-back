@@ -25,5 +25,18 @@ class Group
         $query = 'SELECT name FROM `group` WHERE id = "'.$id.'"';
         return mysqli_fetch_all(mysqli_query($this->link,$query));
     }
+
+    public function create_group($table_id, $name){
+        $query = "INSERT INTO `group` (table_id,name) value (".$table_id.", '".$name."')";
+        mysqli_query($this->link,$query);
+    }
+    public function delete($id){
+        $query = "DELETE FROM `group` WHERE id = ".$id;
+        mysqli_query($this->link,$query);
+    }
+    public function change_name($id,$name){
+        $query = "UPDATE `group` SET name = '".$name."' WHERE id = ".$id;
+        mysqli_query($this->link,$query);
+    }
 }
 

@@ -36,4 +36,20 @@ class Table
         return $tables;
 
     }
+    public function create($name,$date){
+        $query = "INSERT INTO `tables` (name, created) VALUE ( '".$name."', '".$date."')";
+        mysqli_query($this -> link, $query);
+
+    }
+    public function delete($id){
+        $query = "DELETE FROM `tables` where id =".$id;
+        mysqli_query($this -> link, $query);
+
+    }
+
+    public function update($id, $name, $created){
+        $query = "UPDATE `tables` SET name='".$name."', created='".$created."' WHERE id=".$id;
+        mysqli_query($this -> link, $query);
+}
+
 }
