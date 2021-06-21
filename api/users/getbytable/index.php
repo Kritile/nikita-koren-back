@@ -8,4 +8,4 @@ error_reporting(E_ALL);
 ini_set("display_errors", 1);
 include "../../../model/user.php";
 $card = new User();
-echo json_decode( $card->get_by_table($_GET['table_id']));
+echo json_encode( $card->get_by_table($_GET['table_id']));
