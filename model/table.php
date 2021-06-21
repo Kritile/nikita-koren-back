@@ -39,7 +39,8 @@ class Table
     public function create($name,$date){
         $query = "INSERT INTO `tables` (name, created) VALUE ( '".$name."', '".$date."');SELECT LAST_INSERT_ID();";
         $fetch = mysqli_query($this -> link, $query);
-
+        var_dump($query);
+        var_dump($fetch->fetch_all());
         var_dump($fetch->fetch_array());
         return mysqli_fetch_all($fetch);
     }
