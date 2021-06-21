@@ -22,7 +22,7 @@ class Group
     }
     public function get_all_group($uid, $table_id){
         $query = "SELECT * FROM `group` WHERE user_id = ".$uid." AND table_id = ".$table_id;
-        return  mysqli_fetch_all(mysqi_query($this->link, $query));
+        return  mysqli_fetch_all(mysqli_query($this->link, $query));
     }
     public function get_name($id){
         $query = 'SELECT name FROM `group` WHERE id = "'.$id.'"';
