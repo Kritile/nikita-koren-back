@@ -50,6 +50,16 @@ class User
         $query = "INSERT INTO user_tables (user_id, table_id) VALUE (".$id.",".$table_id.")";
         mysqli_query($this->link, $query);
     }
+    public function get_by_table($table_id){
+        $users = [];
+        $query = "SELECT user_id FROM user_tables WHERE table_id=".$table_id;
+        $userIds = mysqli_fetch_all(mysqli_query($this->link, $query));
+        foreach ($userIds as $value){
+            $query2 = "SELECT * FROM users WHERE id=".$value;
+            $users[] = mysqli_fetch_all(mysqli_query($this->link, $query2));
+        }
+        return $users;
+    }
 
 
 }
