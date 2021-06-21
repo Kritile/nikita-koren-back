@@ -55,7 +55,8 @@ class User
         $query = "SELECT user_id FROM user_tables WHERE table_id=".$table_id;
         $userIds = mysqli_fetch_all(mysqli_query($this->link, $query));
         foreach ($userIds as $value){
-            $query2 = "SELECT * FROM users WHERE id=".$value;
+            var_dump($value);
+            $query2 = "SELECT * FROM users WHERE id=".$value[0];
             $users[] = mysqli_fetch_all(mysqli_query($this->link, $query2));
         }
         return $users;
