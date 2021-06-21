@@ -8,5 +8,5 @@ error_reporting(E_ALL);
 ini_set("display_errors", 1);
 include "../../../model/table.php";
 $card = new Table();
-echo json_encode($card->create($_GET['name'],$_GET['date']));
+echo json_encode($card->create($_GET['name'],$_GET['date'])[0][0]);
 
