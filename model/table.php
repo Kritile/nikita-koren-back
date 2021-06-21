@@ -37,12 +37,10 @@ class Table
 
     }
     public function create($name,$date){
-        $query = "INSERT INTO `tables` (name, created) VALUE ( '".$name."', '".$date."');SELECT LAST_INSERT_ID();";
+        $query = "INSERT INTO `tables` (name, created) VALUE ( '".$name."', '".$date."')";
         $fetch = mysqli_query($this -> link, $query);
-        var_dump($query);
-        var_dump($fetch->fetch_all());
-        var_dump($fetch->fetch_array());
-        return mysqli_fetch_all($fetch);
+        mysqli_fetch_all($fetch);
+        return mysqli_insert_id($this->link);
     }
     public function delete($id){
         $query = "DELETE FROM `tables` where id =".$id;
