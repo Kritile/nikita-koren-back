@@ -38,7 +38,9 @@ class Table
     }
     public function create($name,$date){
         $query = "INSERT INTO `tables` (name, created) VALUE ( '".$name."', '".$date."')";
+        $query_table = "SELECT id FROM `tables`  WHERE name = ".$name;
         mysqli_query($this -> link, $query);
+        return mysqli_fetch_all(mysqli_query($this -> link, $query_table));
 
     }
     public function delete($id){
