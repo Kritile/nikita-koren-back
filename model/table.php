@@ -40,7 +40,7 @@ class Table
         $query = "INSERT INTO `tables` (name, created) VALUE ( '".$name."', '".$date."');SELECT LAST_INSERT_ID();";
         $fetch = mysqli_query($this -> link, $query);
 
-        var_dump(mysqli_fetch_all($fetch));
+        var_dump($fetch->fetch_array());
         return mysqli_fetch_all($fetch);
     }
     public function delete($id){
