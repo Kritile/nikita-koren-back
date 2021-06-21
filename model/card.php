@@ -23,19 +23,10 @@ class Card
 
     }
 
-    public function getCardListByTable($table_id) {
-        $query = 'SELECT card_id FROM `group` WHERE table_id = "'.$table_id.'"';
-        $card_ids = array();
-        $cards = array();
-        foreach(mysqli_fetch_all(mysqli_query($this->link, $query)) as $key => $value){
-            $card_ids[] = $value[0];
-        }
-        foreach($card_ids as $key => $value){
-            $query = 'SELECT * FROM `card` WHERE id = "'.$value.'"';
-            $cards[] = mysqli_fetch_assoc(mysqli_query($this -> link, $query));
+    public function getCardListByTable($group_id) {
+        $query = 'SELECT * FROM card WHERE group_id ='.$group_id;
 
-        }
-        return $cards;
+        return mysqli_fetch_all(mysqli_query($this->link, $query));
     }
     public function getCardListByUser($user_id) {
         $query = 'SELECT card_id FROM `user_group` WHERE user_id = "'.$user_id.'"';
