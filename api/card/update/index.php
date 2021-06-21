@@ -8,4 +8,4 @@ error_reporting(E_ALL);
 ini_set("display_errors", 1);
 include "../../../model/card.php";
 $card = new Card();
-$card->update_card($_GET['id'],$_GET['group'],$_GET['name'],$_GET['desc'],$_GET['date']);
+$card->update_card($_GET['id'],$_GET['group'],$_GET['name'],$_GET['desc'],$_GET['date'], $_GET["status"]);
