@@ -44,6 +44,7 @@ class Card
     }
     public function insert_card($group_id, $name, $desc,  $date, $status = 0) {
         $query = 'INSERT INTO `card` (name, `desc`, status, date, group_id) VALUE ("'.$name.'","'.$desc.'",'.$status.',"'.$date.'",'.$group_id.')';
+        var_dump($query);
         mysqli_query($this->link, $query);
         print_r(mysqli_error($this->link));
     }
