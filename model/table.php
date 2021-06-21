@@ -44,7 +44,9 @@ class Table
     }
     public function delete($id){
         $query = "DELETE FROM `tables` where id =".$id;
+        $query_user_table = "DELETE FROM `user_tables` where table_id =".$id;
         mysqli_query($this -> link, $query);
+        mysqli_query($this -> link, $query_user_table);
 
     }
 
